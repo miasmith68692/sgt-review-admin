@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>审稿通 - 后台管理</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- ========== 登录页面 ========== -->
+  <div id="loginPage" class="page">
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="logo">审稿通</div>
+        <div class="logo-sub">Admin Panel</div>
+      </div>
+      <div class="login-header">
+        <h1>后台登录</h1>
+        <p>请输入管理员账号和密码</p>
+      </div>
+      <div class="login-form">
+        <div class="form-group">
+          <label for="loginUsername">用户名</label>
+          <input type="text" id="loginUsername" placeholder="请输入用户名" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">密码</label>
+          <input type="password" id="loginPassword" placeholder="请输入密码" autocomplete="current-password">
+        </div>
+        <button id="loginBtn" class="btn btn-primary">登 录</button>
+        <p id="loginError" class="error-msg"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 管理面板 ========== -->
+  <div id="adminPage" class="page" style="display:none;">
+    <header class="admin-header">
+      <div class="admin-header-left">
+        <span class="brand">审稿通</span>
+        <h1>后台管理</h1>
+      </div>
+      <div class="admin-header-right">
+        <span id="adminUserDisplay" class="admin-user"></span>
+        <span id="sessionCount" class="admin-user" style="color:#64748b;font-size:12px;"></span>
+        <button id="logoutAllBtn" class="btn btn-outline" style="border-color:#ef4444;color:#ef4444;">🔒 登出所有设备</button>
+        <button id="logoutBtn" class="btn btn-outline">退出登录</button>
+      </div>
+    </header>
+
+    <div class="admin-body">
+      <!-- 左侧：生成激活码 -->
+      <section class="panel-left">
+        <h2>✏️ 生成激活码</h2>
+        <div class="gen-form">
+          <div class="form-group">
+            <label for="genPlan">套餐类型</label>
+            <select id="genPlan">
+              <option value="weekly">一周（7天）</option>
+              <option value="halfmonth">半月（15天）</option>
+              <option value="monthly">月度（30天）</option>
+              <option value="quarterly">季度（90天）</option>
+              <option value="halfyear">半年（180天）</option>
+              <option value="yearly">年度（365天）</option>
+              <option value="trial">试用（3天）</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="genUid">用户 ID</label>
+            <input type="text" id="genUid" placeholder="例如：U001、张三、手机号">
+          </div>
+          <button id="genBtn" class="btn btn-primary">生 成</button>
+        </div>
+        <!-- 生成结果 -->
+        <div id="genResult" class="gen-result" style="display:none;">
+          <div class="result-label">✅ 激活码已生成</div>
+          <div class="result-info">
+            <div>套餐：<span id="resultPlan"></span></div>
+            <div>用户 ID：<span id="resultUid"></span></div>
+            <div>到期日：<span id="resultExpire"></span></div>
+          </div>
+          <div class="result-key" id="resultKey"></div>
+          <div class="result-actions">
+            <button class="btn btn-copy" id="copyKeyBtn">📋 复制激活码</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 右侧：激活码列表 -->
+      <section class="panel-right">
+        <h2>📋 激活码列表</h2>
+        <div class="table-toolbar">
+          <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="搜索用户 ID...">
+          </div>
+          <div class="stats-summary" id="statsSummary"></div>
+        </div>
+        <div class="table-wrap">
+          <table id="keysTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>套餐</th>
+                <th>用户 ID</th>
+                <th>到期日</th>
+                <th>生成时间</th>
+                <th>状态</th>
+                <th>使用时间</th>
+                <th>激活码</th>
+              </tr>
+            </thead>
+            <tbody id="keysBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
