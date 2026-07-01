@@ -77,7 +77,7 @@ async function handleLogin() {
 
   if (result.success) {
     authToken = result.token;
-    adminUserDisplay.textContent = '管理员：' + username;
+    adminUserDisplay.textContent = username;
     loginPage.style.display = 'none';
     adminPage.style.display = 'flex';
     adminPage.style.flexDirection = 'column';
