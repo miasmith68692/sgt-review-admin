@@ -36,15 +36,23 @@
   <!-- ========== 管理面板 ========== -->
   <div id="adminPage" class="page" style="display:none;">
     <header class="admin-header">
-      <div class="admin-header-left">
+      <!-- 第一行：品牌 + 大标题 -->
+      <div class="header-top-row">
         <span class="brand">审稿通</span>
-        <h1>后台管理</h1>
+        <h1 class="main-title">后台管理</h1>
       </div>
-      <div class="admin-header-right">
-        <span id="adminUserDisplay" class="admin-user"></span>
-        <span id="sessionCount" class="admin-user" style="color:#64748b;font-size:12px;"></span>
-        <button id="logoutAllBtn" class="btn btn-outline" style="border-color:#ef4444;color:#ef4444;">🔒 登出所有设备</button>
-        <button id="logoutBtn" class="btn btn-outline">退出登录</button>
+      <!-- 第二行：用户信息 + 操作按钮 -->
+      <div class="header-bottom-row">
+        <div class="header-user-group">
+          <span class="user-avatar">👤</span>
+          <span id="adminUserDisplay" class="admin-user-label"></span>
+          <span class="user-divider"></span>
+          <span id="sessionCount" class="session-badge">活跃会话: 0</span>
+        </div>
+        <div class="header-action-group">
+          <button id="logoutBtn" class="btn btn-outline">退出登录</button>
+          <button id="logoutAllBtn" class="btn btn-danger-outline">🔒 登出所有设备</button>
+        </div>
       </div>
     </header>
 
